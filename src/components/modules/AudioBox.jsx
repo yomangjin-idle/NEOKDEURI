@@ -30,6 +30,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  top: -3rem;
   cursor: pointer;
 `;
 

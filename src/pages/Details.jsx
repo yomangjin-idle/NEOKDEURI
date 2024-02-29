@@ -85,6 +85,8 @@ const DetailBox = styled.div`
   flex-grow: 2;
   padding: 1.5rem 1.5rem 0 1.5rem;
   border-radius: 1.75rem 0 0 0;
+  position: relative;
+  top: -3rem;
   background-color: ${(props) => props.theme.colors.background.primary};
 `;
 
