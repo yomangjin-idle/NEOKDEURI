@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
+import Onboading from "pages/Onboading";
+import Layout from "./Layout";
+import Main from "pages/Main";
+import Details from "pages/Details";
+import AudioBooks from "pages/AudioBooks";
+import Test from "pages/Test";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Onboading />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/details/audio/:id" element={<AudioBooks />} />
+            <Route path="/test" element={<Test />} />
+          </Routes>
+        </Layout>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
