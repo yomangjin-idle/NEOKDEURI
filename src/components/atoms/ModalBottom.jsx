@@ -22,11 +22,9 @@ const ModalBottom = ({ open, onClickCloseModal, children }) => {
 export default ModalBottom;
 
 const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute;
   left: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -38,15 +36,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 30;
   position: relative;
 `;
 
 const Section = styled.section`
   width: 375px;
-  position: fixed;
-  bottom: 8.5rem;
+  position: absolute;
+  bottom: 0;
   overflow: hidden;
-  z-index: 10;
+  z-index: 30;
   animation: ${(props) => (props.open ? `opened 0.3s` : `closed 0.3s`)};
 
   @keyframes opened {
@@ -74,7 +73,6 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   border-radius: 1.25rem 1.25rem 0 0;
-
   padding: 1rem;
   position: relative;
   color: white;

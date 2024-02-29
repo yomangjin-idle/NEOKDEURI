@@ -132,11 +132,11 @@ export const Main = () => {
               )}
             </TransformComponent>
           </TransformWrapper>
+          <ModalBottom open={open} onClickCloseModal={onClickCloseModalHandler}>
+            <ModalDescription onClickHandler={onClickButtonHandler} />
+          </ModalBottom>
         </MapLayout>
       </Container>
-      <ModalBottom open={open} onClickCloseModal={onClickCloseModalHandler}>
-        <ModalDescription onClickHandler={onClickButtonHandler} />
-      </ModalBottom>
     </>
   );
 };
