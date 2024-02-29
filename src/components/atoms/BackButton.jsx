@@ -23,8 +23,8 @@ const BackButton = ({ title }) => {
 export default BackButton;
 
 const Container = styled.div`
-  position: fixed;
-  top: 16.1rem;
+  position: sticky;
+  top: 0;
   left: 0;
   display: flex;
   flex-direction: row;
@@ -66,7 +66,6 @@ const Content = styled.div`
   width: 375px;
   height: 100%;
   font-size: ${(props) => props.theme.font.fontSize.large};
-
   color: ${(props) => props.theme.font.colors.white};
   display: flex;
   align-items: center;

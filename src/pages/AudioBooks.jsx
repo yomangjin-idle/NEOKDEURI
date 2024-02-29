@@ -6,11 +6,10 @@ import styled from "styled-components";
 const AudioBooks = () => {
   const { id } = useParams();
   return (
-    <>
+    <Wrapper>
       <BackButton title="다랑쉬굴의 추억" />
-      <Wrapper>
-        <Content>
-          {`그 시절, 저는 제주도에서 생활하며 이루 어려운 시기를 겪었습니다.제주4·3사건, 그것은 제주도민들에게 깊은 상처를 남긴 참혹한 역사입니다.그 중심에는 '다랑쉬굴'이 있었죠.
+      <Content>
+        {`그 시절, 저는 제주도에서 생활하며 이루 어려운 시기를 겪었습니다.제주4·3사건, 그것은 제주도민들에게 깊은 상처를 남긴 참혹한 역사입니다.그 중심에는 '다랑쉬굴'이 있었죠.
           
           다랑쉬굴은 제주도 서귀포시에 위치한 동굴로, 제주4·3사건에서 많은 희생자들이 이곳에서 생명을 잃었습니다.
           
@@ -26,16 +25,17 @@ const AudioBooks = () => {
           참혹한 역사를 잊지 않고, 더 나은 미래를 위해 노력해야 합니다.
           
           다랑쉬굴의 기억은 우리에게 평화의 중요성을 일깨워주며, 그 희생자들에 대한 존경의 마음을 갖게 합니다.`}
-        </Content>
-      </Wrapper>
+      </Content>
       <AudioPlayer id={id} />
-    </>
+    </Wrapper>
   );
 };
 
 export default AudioBooks;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: #252936;
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
 
 const Content = styled.p`
   height: 32.6rem;
-  margin: 4.25rem 1.5rem 5.75rem 1.5rem;
+  margin: 0.5rem 1.5rem 0 1.5rem;
   color: ${(props) => props.theme.font.colors.white};
   overflow-y: scroll;
   -ms-overflow-style: none;

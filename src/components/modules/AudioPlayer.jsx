@@ -86,8 +86,8 @@ const AudioPlayer = ({ id }) => {
 export default AudioPlayer;
 
 const Container = styled.div`
-  position: fixed;
-  bottom: 15rem;
+  position: sticky;
+  bottom: 0;
   width: 100%;
   height: 5.75rem;
   display: flex;
