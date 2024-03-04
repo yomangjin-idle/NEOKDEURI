@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**kakao x goorm**
 
-## Available Scripts
+ <h2> 2024 구름톤 in JEJU 9기 🍊</h2>
 
-In the project directory, you can run:
+ <br/>
 
-### `npm start`
+  <br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
+  
+- 서비스 명 : **넋드리** <br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 서비스 소개 :
 
-### `npm test`
+- 배포 링크 :
+  <br />
+  <br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Role
 
-### `npm run build`
+<br/>
+<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](https://velog.velcdn.com/images/jooooo/post/69f31155-74cf-4f4c-925e-fd83e0d78d9e/image.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `npm run eject`
+<div align =center>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+</div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br />
+<br />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deploy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br/>
+<br/>
 
-## Learn More
+## Git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Branch
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- main : 서비스 운영 브랜치
+- dev : 개발중인 브랜치
+- feat/기능명 : 기능 개발 브랜치
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Commit Message
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Message  |               설명                |
+| :------: | :-------------------------------: |
+|   feat   |         새로운 기능 추가          |
+|   fix    |             버그 수정             |
+|   docs   |             문서 수정             |
+| refactor |           코드 리팩터링           |
+|  style   |            디자인 변경            |
+|  chore   | 빌드 부분 혹은 패키지 매니저 수정 |
+|  remove  |          코드(파일) 삭제          |
+|  rename  |       파일 혹은 폴더명 수정       |
+| release  |               배포                |
