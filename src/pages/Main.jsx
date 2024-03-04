@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import jejumap from "assets/main_island.svg";
 import jejuBackGroundNight from "assets/main_background_night.svg";
 import jejuBackGroundSun from "assets/main_background_sun.svg";
-
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styled, { keyframes } from "styled-components";
 import { DUMMY } from "./dummy";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "assets/logo.svg";
 import ModalBottom from "components/atoms/ModalBottom";
 import ModalDescription from "components/molecules/ModalDescription";
+import { getTourInfoAPI } from "services/tour";
 // import bgImg from "assets/backgroud_flower.svg";
 
 export const Main = () => {
@@ -43,26 +43,39 @@ export const Main = () => {
   };
 
   useEffect(() => {
+    const getTourInfo = async () => {
+      try {
+        const response = await getTourInfoAPI();
+        const data = response?.data;
+
+        setList(
+          list.map((item) => {
+            return { ...item, address: data[item.id - 1].address };
+          })
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getTourInfo();
+  }, []);
+
+  useEffect(() => {
     let ids = [];
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
       ids.push(id);
     }
-    console.log(ids);
+
     const arrays = list.map((item) => {
-      // ids 배열에 item.id가 존재하지 않으면, status를 true로 설정합니다.
       if (ids.includes(String(item.id))) {
         item.status = true;
         return item;
       } else return item;
     });
-    console.log("hit");
-    console.log(arrays);
-    // DUMMY 배열을 업데이트합니다.
     setList([...arrays]);
-
-    console.log(list);
 
     if (list.filter((el) => el.status === true).length === 15) {
       setCheck(true);
@@ -133,7 +146,10 @@ export const Main = () => {
             </TransformComponent>
           </TransformWrapper>
           <ModalBottom open={open} onClickCloseModal={onClickCloseModalHandler}>
-            <ModalDescription onClickHandler={onClickButtonHandler} />
+            <ModalDescription
+              onClickHandler={onClickButtonHandler}
+              placeId={placeId}
+            />
           </ModalBottom>
         </MapLayout>
       </Container>
