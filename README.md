@@ -25,7 +25,7 @@
 
 ## Page
 
-![](https://velog.velcdn.com/images/jooooo/post/69f31155-74cf-4f4c-925e-fd83e0d78d9e/image.gif)
+![넋드리](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/954600dd-d588-4903-ac67-0ce553892053)
 
 ## Tech Stack
 
