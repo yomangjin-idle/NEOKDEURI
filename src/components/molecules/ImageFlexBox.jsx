@@ -1,11 +1,7 @@
 import ImageTemplate from "components/modules/ImageTemplate";
 import useMouseDrag from "hooks/useMouseDrag";
-import a from "assets/a.png";
-import b from "assets/b.png";
-import c from "assets/c.png";
 import styled from "styled-components";
 const ImageFlexBox = (images) => {
-  console.log(images.images);
   const { scrollRef, isDrag, onDragStart, onDragEnd, onThrottleDragMove } =
     useMouseDrag();
   return (
@@ -16,7 +12,15 @@ const ImageFlexBox = (images) => {
       onMouseMove={isDrag ? onThrottleDragMove : undefined}
       ref={(e) => (scrollRef.current = e)}
     >
-      <ImageTemplate src={a} text="다랑쉬굴" margin="0 1rem 0 0" />
+      {images.images &&
+        images.images.map((image, index) => (
+          <ImageTemplate
+            src={image.imgPath}
+            key={index}
+            text={image.content}
+            margin="0 1rem 0 0"
+          />
+        ))}
     </Container>
   );
 };

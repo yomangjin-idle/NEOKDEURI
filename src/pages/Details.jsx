@@ -6,8 +6,6 @@ import PlaceBox from "components/molecules/PlaceBox";
 import MapContainer from "./MapContainer";
 import AudioBox from "components/modules/AudioBox";
 import BackButton from "components/atoms/BackButton";
-import d from "assets/d.png";
-import jeju from "assets/jeju.png";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTourPlaceInfoAPI } from "services/tour";
@@ -22,8 +20,7 @@ const Details = () => {
         const response = await getTourPlaceInfoAPI(id);
         const data = response?.data;
 
-        setContent(data.tourInfo);
-        console.log(data.tourInfo);
+        setContent(data);
       } catch (error) {
         console.error(error);
       }
@@ -35,33 +32,31 @@ const Details = () => {
     <PageWrapper>
       <Container>
         <BackButton />
-        <AudioBox title={content.name} />
+        <AudioBox title={content?.tourInfo?.name} />
         <DetailBox>
           <DetailsTemplate name="주소">
-            <Description>{content.address}</Description>
+            <Description>{content?.tourInfo?.address}</Description>
           </DetailsTemplate>
           <DetailsTemplate name="개요">
-            <Description>{content.content}</Description>
+            <Description>{content?.tourInfo?.content}</Description>
           </DetailsTemplate>
           <DetailsTemplate name="유적지 사진">
-            <ImageFlexBox images={content.images} />
+            <ImageFlexBox images={content?.tourInfo?.images} />
           </DetailsTemplate>
-          <DetailsTemplate name="인근 유적지">
-            <PlaceBox
-              src={jeju}
-              title="제주 4.3 평화공원"
-              des="제주 4.3 사건의 희생자를 기리는 공간"
-              address="제주특별자치도 제주시 오라로 2653"
-              gap="약 10km"
-            />
-            <PlaceBox
-              src={d}
-              title="관덕정"
-              des="제주 4.3 사건의 중심지"
-              address="제주특별자치도 제주시 관덕로 10"
-              gap="약 8km"
-            />
-          </DetailsTemplate>
+          {content?.nearToursInfo?.length > 0 && (
+            <DetailsTemplate name="인근 유적지">
+              {content?.nearToursInfo?.map((tour, index) => (
+                <PlaceBox
+                  src={tour.imgPath}
+                  key={index}
+                  title={tour.name}
+                  des={tour.content}
+                  address={tour.address}
+                  gap={`약 ${tour.dis}Km`}
+                />
+              ))}
+            </DetailsTemplate>
+          )}
           <DetailsTemplate name="지도">
             <MapContainer lat={33.469975} lng={126.831823} />
           </DetailsTemplate>
