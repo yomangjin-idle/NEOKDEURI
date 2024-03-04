@@ -8,29 +8,43 @@ import AudioBox from "components/modules/AudioBox";
 import BackButton from "components/atoms/BackButton";
 import d from "assets/d.png";
 import jeju from "assets/jeju.png";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getTourPlaceInfoAPI } from "services/tour";
 
 const Details = () => {
+  const { id } = useParams();
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    const getTourPlaceInfo = async () => {
+      try {
+        const response = await getTourPlaceInfoAPI(id);
+        const data = response?.data;
+
+        setContent(data.tourInfo);
+        console.log(data.tourInfo);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getTourPlaceInfo();
+  }, []);
+
   return (
     <PageWrapper>
       <Container>
         <BackButton />
-        <AudioBox title="다랑쉬굴" />
+        <AudioBox title={content.name} />
         <DetailBox>
           <DetailsTemplate name="주소">
-            <Description>
-              제주특별자치도 제주시 구좌읍 세화리 2608-6번지 일대
-            </Description>
+            <Description>{content.address}</Description>
           </DetailsTemplate>
           <DetailsTemplate name="개요">
-            <Description>
-              세화리 다랑쉬굴은 1948년 하도리, 종달리 주민 11명이 피신해 살다가
-              발각되어 희생당한 곳이다. 군경토벌대는 이 굴을 발견하고 주민들에게
-              나올 것을 종용했다. 그러나 주민들이 나오지 않자 토벌대는 굴 입구에
-              불을 피워 연기를 불어넣어 고통스게 학살했다.
-            </Description>
+            <Description>{content.content}</Description>
           </DetailsTemplate>
           <DetailsTemplate name="유적지 사진">
-            <ImageFlexBox />
+            <ImageFlexBox images={content.images} />
           </DetailsTemplate>
           <DetailsTemplate name="인근 유적지">
             <PlaceBox
