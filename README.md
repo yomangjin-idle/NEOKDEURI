@@ -35,7 +35,11 @@
 
 ## Page
 
+<div align="center">
+
 ![넋드리](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/954600dd-d588-4903-ac67-0ce553892053)
+
+</div>
 
 ## Git
 
