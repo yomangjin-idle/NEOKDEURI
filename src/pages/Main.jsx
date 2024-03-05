@@ -38,7 +38,7 @@ export const Main = () => {
     setOpen(true);
   };
 
-  const onClickButtonHandler = (e) => {
+  const onClickButtonHandler = () => {
     navigate(`/details/${placeId}`);
   };
 
@@ -75,6 +75,7 @@ export const Main = () => {
         return item;
       } else return item;
     });
+
     setList([...arrays]);
 
     if (list.filter((el) => el.status === true).length === 15) {
