@@ -38,7 +38,7 @@ export const Main = () => {
     setOpen(true);
   };
 
-  const onClickButtonHandler = (e) => {
+  const onClickButtonHandler = () => {
     navigate(`/details/${placeId}`);
   };
 
@@ -49,20 +49,15 @@ export const Main = () => {
       const id = localStorage.key(i);
       ids.push(id);
     }
-    console.log(ids);
+
     const arrays = list.map((item) => {
-      // ids 배열에 item.id가 존재하지 않으면, status를 true로 설정합니다.
       if (ids.includes(String(item.id))) {
         item.status = true;
         return item;
       } else return item;
     });
-    console.log("hit");
-    console.log(arrays);
-    // DUMMY 배열을 업데이트합니다.
-    setList([...arrays]);
 
-    console.log(list);
+    setList([...arrays]);
 
     if (list.filter((el) => el.status === true).length === 15) {
       setCheck(true);

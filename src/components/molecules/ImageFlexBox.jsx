@@ -1,4 +1,3 @@
-import example from "assets/example.png";
 import ImageTemplate from "components/modules/ImageTemplate";
 import useMouseDrag from "hooks/useMouseDrag";
 import a from "assets/a.png";
