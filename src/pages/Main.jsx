@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import jejumap from "assets/main_island.svg";
 import jejuBackGroundNight from "assets/main_background_night.svg";
 import jejuBackGroundSun from "assets/main_background_sun.svg";
-
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styled, { keyframes } from "styled-components";
 import { DUMMY } from "./dummy";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "assets/logo.svg";
 import ModalBottom from "components/atoms/ModalBottom";
 import ModalDescription from "components/molecules/ModalDescription";
+import { getTourInfoAPI } from "services/tour";
 // import bgImg from "assets/backgroud_flower.svg";
 
 export const Main = () => {
@@ -41,6 +41,25 @@ export const Main = () => {
   const onClickButtonHandler = () => {
     navigate(`/details/${placeId}`);
   };
+
+  useEffect(() => {
+    const getTourInfo = async () => {
+      try {
+        const response = await getTourInfoAPI();
+        const data = response?.data;
+
+        setList(
+          list.map((item) => {
+            return { ...item, address: data[item.id - 1].address };
+          })
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getTourInfo();
+  }, []);
 
   useEffect(() => {
     let ids = [];
@@ -128,7 +147,10 @@ export const Main = () => {
             </TransformComponent>
           </TransformWrapper>
           <ModalBottom open={open} onClickCloseModal={onClickCloseModalHandler}>
-            <ModalDescription onClickHandler={onClickButtonHandler} />
+            <ModalDescription
+              onClickHandler={onClickButtonHandler}
+              placeId={placeId}
+            />
           </ModalBottom>
         </MapLayout>
       </Container>

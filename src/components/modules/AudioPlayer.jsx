@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import speech from "assets/speech.mp3";
 import stop from "assets/stop.svg";
 import start from "assets/play.svg";
 import { setLocalStorage } from "modules/utils";
 import { useNavigate } from "react-router-dom";
 
-const AudioPlayer = ({ id }) => {
+const AudioPlayer = ({ id, src }) => {
   const navigate = useNavigate();
-  const audioRef = useRef(new Audio(speech));
+  const audioRef = useRef(new Audio(src));
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -50,7 +49,7 @@ const AudioPlayer = ({ id }) => {
       audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("ended", onEnded);
     };
-  }, []);
+  }, [src]);
 
   const changeAudioProgress = (e) => {
     const width = progressBarContainerRef.current.offsetWidth; // 전체 진행률 바의 너비

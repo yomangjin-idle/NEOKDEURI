@@ -1,10 +1,28 @@
 import BackButton from "components/atoms/BackButton";
 import AudioPlayer from "components/modules/AudioPlayer";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getTourAudioInfoAPI } from "services/tour";
 import styled from "styled-components";
 
 const AudioBooks = () => {
   const { id } = useParams();
+  const [file, setFile] = useState("");
+
+  useEffect(() => {
+    const getTourPlaceInfo = async () => {
+      try {
+        const response = await getTourAudioInfoAPI(id);
+        const data = response?.data;
+
+        setFile(data.filePath);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getTourPlaceInfo();
+  }, []);
+
   return (
     <Wrapper>
       <BackButton title="다랑쉬굴의 추억" />
@@ -26,7 +44,7 @@ const AudioBooks = () => {
           
           다랑쉬굴의 기억은 우리에게 평화의 중요성을 일깨워주며, 그 희생자들에 대한 존경의 마음을 갖게 합니다.`}
       </Content>
-      <AudioPlayer id={id} />
+      <AudioPlayer id={id} src={file} />
     </Wrapper>
   );
 };

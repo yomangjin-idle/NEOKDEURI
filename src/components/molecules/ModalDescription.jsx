@@ -1,25 +1,42 @@
-import Image from "components/atoms/Image";
 import styled from "styled-components";
-import example from "assets/example.png";
 import SubTitle from "components/atoms/SubTitle";
 import Content from "components/atoms/Content";
 import Description from "components/atoms/Description";
+import { useEffect, useState } from "react";
+import { getTourPlaceInfoAPI } from "services/tour";
+import Image from "components/atoms/Image";
 
-const ModalDescription = ({ onClickHandler }) => {
+const ModalDescription = ({ onClickHandler, placeId }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getTourPlaceInfo = async () => {
+      try {
+        const response = await getTourPlaceInfoAPI(placeId);
+        const data = response?.data;
+
+        setContent(data.tourInfo);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getTourPlaceInfo();
+  }, []);
+
   return (
     <PageWrapper>
       <Wrapper>
-        <Image src={example} />
+        {content.images && <Image src={content?.images[0]?.imgPath} />}
         <DescriptionBox>
           <SubTitle fontSize="1rem" margin="0 0 0.125rem 0">
-            다랑쉬골
+            {content.name}
           </SubTitle>
           <Content fontSize="0.75rem" margin="0 0 0.25rem 0" color="#999999">
             제주 4.3 사건의 희생자를 기리는 공간
           </Content>
           <Description fontSize="0.75rem">
-            세화리 다랑쉬굴은 1948년 하도리, 종달리 주민 11명이 피신해 살다가
-            발각되어 희생당한 곳이다.
+            {content.content?.slice(0, content.content.indexOf("다.") + 2)}
           </Description>
         </DescriptionBox>
       </Wrapper>
