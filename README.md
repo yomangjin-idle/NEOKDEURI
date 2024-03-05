@@ -30,33 +30,12 @@
   - **스토리텔링 (오디오)** :
     생성형 ai를 활용해 제주 4.3사건 당시 제주도에 살고있던 도민이라는 페르소나를 부여하고, 유적지 관련 정보와 더불어 당시 사람들이 겪었을 법한 사건으로 이야기를 구성하여 오디오로 제공.
 
-- 배포 링크 :
-
   <br />
   <br />
-
-## Role
-
-<br/>
-<br/>
 
 ## Page
 
 ![넋드리](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/954600dd-d588-4903-ac67-0ce553892053)
-
-## Tech Stack
-
-<div align =center>
-
-</div>
-
-<br />
-<br />
-
-## Deploy
-
-<br/>
-<br/>
 
 ## Git
 
