@@ -17,18 +17,17 @@ export default function MapContainer({ lat = 12, lng = 12 }) {
           level: 5,
         };
 
-        const map = new kakao.maps.Map(container.current, options);
-
         var markerPosition = new kakao.maps.LatLng(lat, lng);
-
         var marker = new kakao.maps.Marker({
           position: markerPosition,
         });
-
+        const map = new kakao.maps.Map(container.current, options);
         marker.setMap(map);
+
       });
     };
-  }, [container]);
+    
+  }, [container,lat,lng]);
 
   return (
     <>

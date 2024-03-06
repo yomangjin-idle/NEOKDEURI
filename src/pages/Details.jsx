@@ -13,7 +13,7 @@ import { getTourPlaceInfoAPI } from "services/tour";
 const Details = () => {
   const { id } = useParams();
   const [content, setContent] = useState([]);
-
+console.log(content)
   useEffect(() => {
     const getTourPlaceInfo = async () => {
       try {
@@ -58,7 +58,7 @@ const Details = () => {
             </DetailsTemplate>
           )}
           <DetailsTemplate name="지도">
-            <MapContainer lat={33.469975} lng={126.831823} />
+            <MapContainer lat={content?.tourInfo?.latitude} lng={content?.tourInfo?.longitude} />
           </DetailsTemplate>
         </DetailBox>
       </Container>
