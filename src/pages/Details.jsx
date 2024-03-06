@@ -58,7 +58,7 @@ console.log(content)
             </DetailsTemplate>
           )}
           <DetailsTemplate name="지도">
-            <MapContainer lat={content?.tourInfo?.latitude} lng={content?.tourInfo?.longitude} />
+            <MapContainer name={content?.tourInfo?.name} lat={content?.tourInfo?.latitude} lng={content?.tourInfo?.longitude} />
           </DetailsTemplate>
         </DetailBox>
       </Container>
