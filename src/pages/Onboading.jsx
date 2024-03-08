@@ -107,7 +107,6 @@ const OnboadingText = styled.div`
   text-align: center;
 `;
 
-// 애니메이션을 적용할 스타일드 컴포넌트 생성
 const MovingBackground = styled.div`
   background-image: url(${onboadingBackground});
   background-repeat: repeat-x;

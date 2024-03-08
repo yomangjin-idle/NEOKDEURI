@@ -25,6 +25,7 @@ const AudioPlayer = ({ id, src }) => {
 
   useEffect(() => {
     const audio = audioRef.current;
+    audio.src = src;
 
     const onLoadedMetadata = () => {
       setDuration(audio.duration);
@@ -52,8 +53,8 @@ const AudioPlayer = ({ id, src }) => {
   }, [src]);
 
   const changeAudioProgress = (e) => {
-    const width = progressBarContainerRef.current.offsetWidth; // 전체 진행률 바의 너비
-    const clickX = e.nativeEvent.offsetX; // 클릭한 위치
+    const width = progressBarContainerRef.current.offsetWidth;
+    const clickX = e.nativeEvent.offsetX;
     const duration = audioRef.current.duration;
     audioRef.current.currentTime = (clickX / width) * duration;
   };
