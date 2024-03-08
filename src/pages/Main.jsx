@@ -10,7 +10,6 @@ import logo from "assets/logo.svg";
 import ModalBottom from "components/atoms/ModalBottom";
 import ModalDescription from "components/molecules/ModalDescription";
 import { getTourInfoAPI } from "services/tour";
-// import bgImg from "assets/backgroud_flower.svg";
 
 export const Main = () => {
   const navigate = useNavigate();
@@ -86,7 +85,6 @@ export const Main = () => {
   return (
     <>
       <Container check={check ? jejuBackGroundSun : jejuBackGroundNight}>
-        {/* {check && <BgImg src={bgImg} />} */}
         <MapLayout>
           <TransformWrapper
             centerOnInit
@@ -158,13 +156,6 @@ export const Main = () => {
   );
 };
 
-// const BgImg = styled.img`
-//   position: absolute;
-//   left: 0;
-//   top: 0;
-//   z-index: 10;
-// `;
-
 const Logo = styled.img`
   position: absolute;
   top: 128px;
@@ -202,7 +193,7 @@ const Spot = styled.div`
   width: 50px;
   height: 50px;
   background-image: url(${(props) => props.link});
-  background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
+  background-repeat: no-repeat;
   background-size: contain;
   transform: scale(${(props) => props.scale});
   cursor: pointer;
