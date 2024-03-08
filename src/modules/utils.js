@@ -1,5 +1,4 @@
 export const setLocalStorage = (id, value) => {
-  // 데이터 저장
   localStorage.setItem(`${id}`, value);
 };
 
