@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from "react";
 const { kakao } = window;
 
-export default function MapContainer({ lat = 12, lng = 12 }) {
+const openNewWindow = (url) => {
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+export default function MapContainer({ name="",lat = 12, lng = 12 }) {
   const container = useRef();
 
   useEffect(() => {
@@ -17,18 +21,18 @@ export default function MapContainer({ lat = 12, lng = 12 }) {
           level: 5,
         };
 
-        const map = new kakao.maps.Map(container.current, options);
-
         var markerPosition = new kakao.maps.LatLng(lat, lng);
-
         var marker = new kakao.maps.Marker({
           position: markerPosition,
         });
-
+        const map = new kakao.maps.Map(container.current, options);
         marker.setMap(map);
+        kakao.maps.event.addListener(marker,"click",()=>openNewWindow(`https://map.kakao.com/link/to/${name},${lat},${lng}`))
+
       });
     };
-  }, [container]);
+    
+  }, [container,lat,lng]);
 
   return (
     <>
