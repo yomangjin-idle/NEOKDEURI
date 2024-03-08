@@ -25,6 +25,7 @@ const AudioPlayer = ({ id, src }) => {
 
   useEffect(() => {
     const audio = audioRef.current;
+    audio.src = src;
 
     const onLoadedMetadata = () => {
       setDuration(audio.duration);
