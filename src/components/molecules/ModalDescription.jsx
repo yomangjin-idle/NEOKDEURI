@@ -33,11 +33,9 @@ const ModalDescription = ({ onClickHandler, placeId }) => {
             {content.name}
           </SubTitle>
           <Content fontSize="0.75rem" margin="0 0 0.25rem 0" color="#999999">
-            제주 4.3 사건의 희생자를 기리는 공간
+            {content.address}
           </Content>
-          <Description fontSize="0.75rem">
-            {content.content?.slice(0, content.content.indexOf("다.") + 2)}
-          </Description>
+          <Description fontSize="0.75rem">{content.outline}</Description>
         </DescriptionBox>
       </Wrapper>
       <ButtonWrapper>
