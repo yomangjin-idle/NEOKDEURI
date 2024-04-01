@@ -66,20 +66,22 @@ const AudioPlayer = ({ id, src }) => {
   };
 
   return (
-    <Container>
-      <Wrapper>
-        <Button onClick={togglePlayPause}>
-          {isPlaying ? <img src={stop} /> : <img src={start} />}
-        </Button>
-        <ProgressBarContainer
-          ref={progressBarContainerRef}
-          onClick={changeAudioProgress}
-        >
-          <ProgressBar currentTime={currentTime} duration={duration} />
-        </ProgressBarContainer>
-        <Time>{formatTime(duration)}</Time>
-      </Wrapper>
-    </Container>
+    src && (
+      <Container>
+        <Wrapper>
+          <Button onClick={togglePlayPause}>
+            {isPlaying ? <img src={stop} /> : <img src={start} />}
+          </Button>
+          <ProgressBarContainer
+            ref={progressBarContainerRef}
+            onClick={changeAudioProgress}
+          >
+            <ProgressBar currentTime={currentTime} duration={duration} />
+          </ProgressBarContainer>
+          <Time>{formatTime(duration)}</Time>
+        </Wrapper>
+      </Container>
+    )
   );
 };
 

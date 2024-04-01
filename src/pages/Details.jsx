@@ -15,6 +15,11 @@ const Details = () => {
   const { id } = useParams();
   const [content, setContent] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const buttonHandler = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   useEffect(() => {
     const getTourPlaceInfo = async () => {
@@ -46,7 +51,14 @@ const Details = () => {
                 <Description>{content?.tourInfo?.address}</Description>
               </DetailsTemplate>
               <DetailsTemplate name="개요">
-                <Description>{content?.tourInfo?.content}</Description>
+                <Description>
+                  {isExpanded
+                    ? content?.tourInfo?.content
+                    : content?.tourInfo?.content?.slice(0, 185)}
+                  {!isExpanded && (
+                    <Button onClick={buttonHandler}>더보기</Button>
+                  )}
+                </Description>
               </DetailsTemplate>
               <DetailsTemplate name="유적지 사진">
                 <ImageFlexBox images={content?.tourInfo?.images} />
@@ -113,6 +125,18 @@ const DetailBox = styled.div`
   position: relative;
   top: -3rem;
   background-color: ${(props) => props.theme.colors.background.primary};
+`;
+
+const Button = styled.button`
+  font-size: 1rem;
+  text-decoration-line: underline;
+  border: none;
+  background-color: transparent;
+  color: #999999;
+  margin: 0 0.5rem;
+  &:hover {
+    color: #d9d9d9;
+  }
 `;
 
 export default Details;

@@ -9,7 +9,11 @@ const AudioBox = ({ title }) => {
   const navigate = useNavigate();
 
   const onClickHandler = () => {
-    navigate(`/details/audio/${id}`);
+    navigate(`/details/audio/${id}`, {
+      state: {
+        title,
+      },
+    });
   };
   return (
     <Wrapper onClick={onClickHandler}>
@@ -32,6 +36,10 @@ const Wrapper = styled.div`
   position: relative;
   top: -3rem;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const Background = styled.div`
