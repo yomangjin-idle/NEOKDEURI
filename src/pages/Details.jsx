@@ -9,18 +9,27 @@ import BackButton from "components/atoms/BackButton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTourPlaceInfoAPI } from "services/tour";
+import LoadingSpinner from "components/atoms/LoadingSpinner";
 
 const Details = () => {
   const { id } = useParams();
   const [content, setContent] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const buttonHandler = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   useEffect(() => {
     const getTourPlaceInfo = async () => {
       try {
+        setIsLoading(true);
         const response = await getTourPlaceInfoAPI(id);
         const data = response?.data;
 
         setContent(data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -32,39 +41,54 @@ const Details = () => {
     <PageWrapper>
       <Container>
         <BackButton />
-        <AudioBox title={content?.tourInfo?.name} />
-        <DetailBox>
-          <DetailsTemplate name="주소">
-            <Description>{content?.tourInfo?.address}</Description>
-          </DetailsTemplate>
-          <DetailsTemplate name="개요">
-            <Description>{content?.tourInfo?.content}</Description>
-          </DetailsTemplate>
-          <DetailsTemplate name="유적지 사진">
-            <ImageFlexBox images={content?.tourInfo?.images} />
-          </DetailsTemplate>
-          {content?.nearToursInfo?.length > 0 && (
-            <DetailsTemplate name="인근 유적지">
-              {content?.nearToursInfo?.map((tour, index) => (
-                <PlaceBox
-                  src={tour.imgPath}
-                  key={index}
-                  title={tour.name}
-                  des={tour.content}
-                  address={tour.address}
-                  gap={`약 ${tour.dis}Km`}
-                />
-              ))}
-            </DetailsTemplate>
-          )}
-          <DetailsTemplate name="지도">
-            <MapContainer
-              name={content?.tourInfo?.name}
-              lat={content?.tourInfo?.latitude}
-              lng={content?.tourInfo?.longitude}
-            />
-          </DetailsTemplate>
-        </DetailBox>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <AudioBox title={content?.tourInfo?.name} />
+            <DetailBox>
+              <DetailsTemplate name="주소">
+                <Description>{content?.tourInfo?.address}</Description>
+              </DetailsTemplate>
+              <DetailsTemplate name="개요">
+                <Description>
+                  {isExpanded
+                    ? content?.tourInfo?.content
+                    : content?.tourInfo?.content?.slice(0, 185)}
+                  {!isExpanded && (
+                    <Button onClick={buttonHandler}>더보기</Button>
+                  )}
+                </Description>
+              </DetailsTemplate>
+              <DetailsTemplate name="유적지 사진">
+                <ImageFlexBox images={content?.tourInfo?.images} />
+              </DetailsTemplate>
+              {content?.nearToursInfo?.length > 0 && (
+                <DetailsTemplate name="인근 유적지">
+                  {content?.nearToursInfo?.map((tour, index) => (
+                    <PlaceBox
+                      src={tour.imgPath}
+                      key={index}
+                      title={tour.name}
+                      des={tour.content}
+                      address={tour.address}
+                      gap={`약 ${tour.dis}Km`}
+                    />
+                  ))}
+                </DetailsTemplate>
+              )}
+              {content.tourInfo && (
+                <DetailsTemplate name="지도">
+                  <MapContainer
+                    name={content?.tourInfo?.name}
+                    lat={content?.tourInfo?.latitude}
+                    lng={content?.tourInfo?.longitude}
+                  />
+                </DetailsTemplate>
+              )}
+            </DetailBox>
+          </>
+        )}
       </Container>
     </PageWrapper>
   );
@@ -88,7 +112,7 @@ const Container = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: ${(props) => props.theme.colors.neutral[700]};
 `;
 
@@ -101,6 +125,18 @@ const DetailBox = styled.div`
   position: relative;
   top: -3rem;
   background-color: ${(props) => props.theme.colors.background.primary};
+`;
+
+const Button = styled.button`
+  font-size: 1rem;
+  text-decoration-line: underline;
+  border: none;
+  background-color: transparent;
+  color: #999999;
+  margin: 0 0.5rem;
+  &:hover {
+    color: #d9d9d9;
+  }
 `;
 
 export default Details;

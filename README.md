@@ -2,7 +2,7 @@
 
 **kakao x goorm**
 
- <h2> 2024 구름톤 in JEJU 9기 🍊</h2>
+ <h2> 2024 구름톤 in JEJU 🍊</h2>
 
   <br/>
   <br/>
@@ -30,16 +30,72 @@
   - **스토리텔링 (오디오)** :
     생성형 ai를 활용해 제주 4.3사건 당시 제주도에 살고있던 도민이라는 페르소나를 부여하고, 유적지 관련 정보와 더불어 당시 사람들이 겪었을 법한 사건으로 이야기를 구성하여 오디오로 제공.
 
+- 배포 링크 : https://www.neokdeuri.com
+
   <br />
   <br />
+
+  ## Contents
+
+- [Role](#role)
+- [Page](#page)
+- [Tech Stack](#tech-stack)
+- [Deploy](#deploy)
+- [Team](#team)
+- [Git](#git)
+
+<br />
+<br />
+
+## Role
+
+<div align="center">
+
+|                                                        노희지                                                        |                                                        김도현                                                        |                                                       강예정                                                        |                                                        강명주                                                         |                                                        고다혜                                                         |
+| :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/9cfa2088-9120-4ea9-8be9-1f27a6faf35d" /> | <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/a7f845db-738a-4633-818f-f80c67efa5bb" /> | <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/7d2664fc-97f3-47ae-b85c-19e51463e334"/> | <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/f14f4cc6-09e0-4405-96e1-284f77b5d4b5"  /> | <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/5a5c581b-b96e-4f6e-87f6-bea636d188ad"  /> |
+|                                                        기획자                                                        |                                                       디자이너                                                       |                                                  프론트엔드 개발자                                                  |                                                   프론트엔드 개발자                                                   |                                                     백엔드 개발자                                                     |
+
+</div>
+
+<br/>
+<br/>
 
 ## Page
 
 <div align="center">
 
-![넋드리](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/954600dd-d588-4903-ac67-0ce553892053)
+<img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/954600dd-d588-4903-ac67-0ce553892053" width="400px" height="700px">
 
 </div>
+
+## Tech Stack
+
+|   Area    |                                                                                                                                                                                                                                                                                                                               Tech Stack                                                                                                                                                                                                                                                                                                                               |
+| :-------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Front-end | <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white"> <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"> |
+| Back-end  |                                                            <img src="https://img.shields.io/badge/java-F24E1E?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/SPRING DATA JPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">                                                             |
+
+<br/>
+<br/>
+
+## Deploy
+
+<div align="center">
+ <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/759fc97c-40d3-46ed-b837-b3961ba78576" width="600px" height="400px">
+ </div>
+
+<br/>
+<br/>
+
+## Team
+
+<div align="center">
+ <img src="https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/d0cbf8bf-5e03-4efd-acf5-3a19bcae1c27" width="600px" height="400px">
+ </div>
+
+<br/>
+<br/>
 
 ## Git
 
