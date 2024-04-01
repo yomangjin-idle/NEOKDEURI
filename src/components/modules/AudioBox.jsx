@@ -36,6 +36,10 @@ const Wrapper = styled.div`
   position: relative;
   top: -3rem;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const Background = styled.div`
