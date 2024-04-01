@@ -43,7 +43,7 @@
 
 ## Deploy
 
-![deploy](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/bc5588cf-e571-47b9-b2c4-1976dbc828e7)
+![deploy](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/759fc97c-40d3-46ed-b837-b3961ba78576)
 
 ## Git
 
