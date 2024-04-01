@@ -41,6 +41,10 @@
 
 </div>
 
+## Deploy
+
+![deploy](https://github.com/yomangjin-idle/neokdeuri_front/assets/96197310/759fc97c-40d3-46ed-b837-b3961ba78576)
+
 ## Git
 
 ### Branch

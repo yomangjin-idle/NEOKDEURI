@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "assets/logo.svg";
 import ModalBottom from "components/atoms/ModalBottom";
 import ModalDescription from "components/molecules/ModalDescription";
-import { getTourInfoAPI } from "services/tour";
 
 export const Main = () => {
   const navigate = useNavigate();
@@ -40,25 +39,6 @@ export const Main = () => {
   const onClickButtonHandler = () => {
     navigate(`/details/${placeId}`);
   };
-
-  useEffect(() => {
-    const getTourInfo = async () => {
-      try {
-        const response = await getTourInfoAPI();
-        const data = response?.data;
-
-        setList(
-          list.map((item) => {
-            return { ...item, address: data[item.id - 1].address };
-          })
-        );
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getTourInfo();
-  }, []);
 
   useEffect(() => {
     let ids = [];
