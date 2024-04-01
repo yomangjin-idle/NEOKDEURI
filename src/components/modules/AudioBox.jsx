@@ -9,7 +9,11 @@ const AudioBox = ({ title }) => {
   const navigate = useNavigate();
 
   const onClickHandler = () => {
-    navigate(`/details/audio/${id}`);
+    navigate(`/details/audio/${id}`, {
+      state: {
+        title,
+      },
+    });
   };
   return (
     <Wrapper onClick={onClickHandler}>
