@@ -1,4 +1,5 @@
 import BackButton from "components/atoms/BackButton";
+import LoadingSpinner from "components/atoms/LoadingSpinner";
 import AudioPlayer from "components/modules/AudioPlayer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -8,14 +9,17 @@ import styled from "styled-components";
 const AudioBooks = () => {
   const { id } = useParams();
   const [file, setFile] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getTourPlaceInfo = async () => {
       try {
+        setIsLoading(true);
         const response = await getTourAudioInfoAPI(id);
         const data = response?.data;
 
         setFile(data.filePath);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -26,8 +30,12 @@ const AudioBooks = () => {
   return (
     <Wrapper>
       <BackButton title="다랑쉬굴의 추억" />
-      <Content>
-        {`그 시절, 저는 제주도에서 생활하며 이루 어려운 시기를 겪었습니다.제주4·3사건, 그것은 제주도민들에게 깊은 상처를 남긴 참혹한 역사입니다.그 중심에는 '다랑쉬굴'이 있었죠.
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Content>
+            {`그 시절, 저는 제주도에서 생활하며 이루 어려운 시기를 겪었습니다.제주4·3사건, 그것은 제주도민들에게 깊은 상처를 남긴 참혹한 역사입니다.그 중심에는 '다랑쉬굴'이 있었죠.
           
           다랑쉬굴은 제주도 서귀포시에 위치한 동굴로, 제주4·3사건에서 많은 희생자들이 이곳에서 생명을 잃었습니다.
           
@@ -43,8 +51,10 @@ const AudioBooks = () => {
           참혹한 역사를 잊지 않고, 더 나은 미래를 위해 노력해야 합니다.
           
           다랑쉬굴의 기억은 우리에게 평화의 중요성을 일깨워주며, 그 희생자들에 대한 존경의 마음을 갖게 합니다.`}
-      </Content>
-      <AudioPlayer id={id} src={file} />
+          </Content>
+          <AudioPlayer id={id} src={file} />
+        </>
+      )}
     </Wrapper>
   );
 };

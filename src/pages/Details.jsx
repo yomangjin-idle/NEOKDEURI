@@ -9,18 +9,22 @@ import BackButton from "components/atoms/BackButton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTourPlaceInfoAPI } from "services/tour";
+import LoadingSpinner from "components/atoms/LoadingSpinner";
 
 const Details = () => {
   const { id } = useParams();
   const [content, setContent] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getTourPlaceInfo = async () => {
       try {
+        setIsLoading(true);
         const response = await getTourPlaceInfoAPI(id);
         const data = response?.data;
 
         setContent(data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -32,39 +36,47 @@ const Details = () => {
     <PageWrapper>
       <Container>
         <BackButton />
-        <AudioBox title={content?.tourInfo?.name} />
-        <DetailBox>
-          <DetailsTemplate name="주소">
-            <Description>{content?.tourInfo?.address}</Description>
-          </DetailsTemplate>
-          <DetailsTemplate name="개요">
-            <Description>{content?.tourInfo?.content}</Description>
-          </DetailsTemplate>
-          <DetailsTemplate name="유적지 사진">
-            <ImageFlexBox images={content?.tourInfo?.images} />
-          </DetailsTemplate>
-          {content?.nearToursInfo?.length > 0 && (
-            <DetailsTemplate name="인근 유적지">
-              {content?.nearToursInfo?.map((tour, index) => (
-                <PlaceBox
-                  src={tour.imgPath}
-                  key={index}
-                  title={tour.name}
-                  des={tour.content}
-                  address={tour.address}
-                  gap={`약 ${tour.dis}Km`}
-                />
-              ))}
-            </DetailsTemplate>
-          )}
-          <DetailsTemplate name="지도">
-            <MapContainer
-              name={content?.tourInfo?.name}
-              lat={content?.tourInfo?.latitude}
-              lng={content?.tourInfo?.longitude}
-            />
-          </DetailsTemplate>
-        </DetailBox>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <AudioBox title={content?.tourInfo?.name} />
+            <DetailBox>
+              <DetailsTemplate name="주소">
+                <Description>{content?.tourInfo?.address}</Description>
+              </DetailsTemplate>
+              <DetailsTemplate name="개요">
+                <Description>{content?.tourInfo?.content}</Description>
+              </DetailsTemplate>
+              <DetailsTemplate name="유적지 사진">
+                <ImageFlexBox images={content?.tourInfo?.images} />
+              </DetailsTemplate>
+              {content?.nearToursInfo?.length > 0 && (
+                <DetailsTemplate name="인근 유적지">
+                  {content?.nearToursInfo?.map((tour, index) => (
+                    <PlaceBox
+                      src={tour.imgPath}
+                      key={index}
+                      title={tour.name}
+                      des={tour.content}
+                      address={tour.address}
+                      gap={`약 ${tour.dis}Km`}
+                    />
+                  ))}
+                </DetailsTemplate>
+              )}
+              {content.tourInfo && (
+                <DetailsTemplate name="지도">
+                  <MapContainer
+                    name={content?.tourInfo?.name}
+                    lat={content?.tourInfo?.latitude}
+                    lng={content?.tourInfo?.longitude}
+                  />
+                </DetailsTemplate>
+              )}
+            </DetailBox>
+          </>
+        )}
       </Container>
     </PageWrapper>
   );
@@ -88,7 +100,7 @@ const Container = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: ${(props) => props.theme.colors.neutral[700]};
 `;
 

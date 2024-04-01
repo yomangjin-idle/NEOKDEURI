@@ -5,17 +5,21 @@ import Description from "components/atoms/Description";
 import { useEffect, useState } from "react";
 import { getTourPlaceInfoAPI } from "services/tour";
 import Image from "components/atoms/Image";
+import LoadingSpinner from "components/atoms/LoadingSpinner";
 
 const ModalDescription = ({ onClickHandler, placeId }) => {
   const [content, setContent] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getTourPlaceInfo = async () => {
       try {
+        setIsLoading(true);
         const response = await getTourPlaceInfoAPI(placeId);
         const data = response?.data;
 
         setContent(data.tourInfo);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -26,21 +30,31 @@ const ModalDescription = ({ onClickHandler, placeId }) => {
 
   return (
     <PageWrapper>
-      <Wrapper>
-        {content.images && <Image src={content?.images[0]?.imgPath} />}
-        <DescriptionBox>
-          <SubTitle fontSize="1rem" margin="0 0 0.125rem 0">
-            {content.name}
-          </SubTitle>
-          <Content fontSize="0.75rem" margin="0 0 0.25rem 0" color="#999999">
-            {content.address}
-          </Content>
-          <Description fontSize="0.75rem">{content.outline}</Description>
-        </DescriptionBox>
-      </Wrapper>
-      <ButtonWrapper>
-        <Button onClick={onClickHandler}>더보기</Button>
-      </ButtonWrapper>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Wrapper>
+            {content.images && <Image src={content?.images[0]?.imgPath} />}
+            <DescriptionBox>
+              <SubTitle fontSize="1rem" margin="0 0 0.125rem 0">
+                {content.name}
+              </SubTitle>
+              <Content
+                fontSize="0.75rem"
+                margin="0 0 0.25rem 0"
+                color="#999999"
+              >
+                {content.address}
+              </Content>
+              <Description fontSize="0.75rem">{content.outline}</Description>
+            </DescriptionBox>
+          </Wrapper>
+          <ButtonWrapper>
+            <Button onClick={onClickHandler}>더보기</Button>
+          </ButtonWrapper>
+        </>
+      )}
     </PageWrapper>
   );
 };
@@ -51,6 +65,8 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 10rem;
 `;
 
 const Wrapper = styled.div`
