@@ -1,6 +1,7 @@
 name: neokdeuri-front-release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
